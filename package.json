@@ -1,0 +1,19 @@
+{
+  "name": "trump-bot",
+  "version": "1.0.0",
+  "description": "trump bot",
+  "main": "app-get.js",
+  "scripts": {
+    "start": "node app-stream.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "trump",
+    "bot"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "twit": "^2.2.11"
+  }
+}
