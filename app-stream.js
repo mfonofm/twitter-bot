@@ -31,7 +31,6 @@ function tweetEvent(eventMsg) {
             tmode = 'extended';
             console.log(`This is an ${tmode} tweet, it has ${eventMsg.extended_tweet['full_text'].length} characters`);
             reversedMsg = eventMsg.extended_tweet['full_text'].toLowerCase().split("").reverse().join("");
-            console.log(eventMsg.extended_tweet['full_text'].length);
             if (reversedMsg.indexOf(findRT) < 0) {
                 tweetIt(reversedMsg);
             } else {
@@ -42,7 +41,6 @@ function tweetEvent(eventMsg) {
             tmode = 'compat';
             console.log(`This is a ${tmode} tweet, it has ${eventMsg.text.length} characters`);
             reversedMsg = eventMsg['text'].toLowerCase().split("").reverse().join("");
-            console.log(eventMsg.text.length);
             if (reversedMsg.indexOf(findRT) < 0) {
                 tweetIt(reversedMsg);
             } else {
