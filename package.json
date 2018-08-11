@@ -1,14 +1,15 @@
 {
-  "name": "trump-bot",
+  "name": "pmurt-bot",
   "version": "1.0.0",
-  "description": "trump bot",
+  "description": "pmurt bot",
   "main": "app-get.js",
   "scripts": {
     "start": "node app-stream.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "trump",
+    "twitter",
+    "pmurt",
     "bot"
   ],
   "author": "",

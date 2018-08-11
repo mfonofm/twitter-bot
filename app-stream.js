@@ -22,6 +22,8 @@ stream.on('tweet', tweetEvent);
 var reversedMsg;
 var findRT = "TR";
 var tmode;
+var msgID;
+var userScreenName;
 
 function tweetEvent(eventMsg) {
 
@@ -32,6 +34,8 @@ function tweetEvent(eventMsg) {
             console.log(`This is an ${tmode} tweet, it has ${eventMsg.extended_tweet['full_text'].length} characters`);
             reversedMsg = eventMsg.extended_tweet['full_text'].toLowerCase().split("").reverse().join("");
             if (reversedMsg.indexOf(findRT) < 0) {
+                userScreenName = eventMsg.user.screen_name;
+                msgID = eventMsg.id_str;
                 tweetIt(reversedMsg);
             } else {
                 console.log("Nothing tweeted. This is a Retweet");
@@ -42,6 +46,8 @@ function tweetEvent(eventMsg) {
             console.log(`This is a ${tmode} tweet, it has ${eventMsg.text.length} characters`);
             reversedMsg = eventMsg['text'].toLowerCase().split("").reverse().join("");
             if (reversedMsg.indexOf(findRT) < 0) {
+                userScreenName = eventMsg.user.screen_name;
+                msgID = eventMsg.id_str;
                 tweetIt(reversedMsg);
             } else {
                 console.log("Nothing tweeted. This is a Retweet");
@@ -56,7 +62,8 @@ function tweetEvent(eventMsg) {
 //post tweet
 function tweetIt(txt) {
     const tweetParams = {
-        status: txt
+        status: `.@${userScreenName} ${txt}`,
+        in_reply_to_status_id: msgID
     };
 
     T.post('statuses/update', tweetParams, sentTweet);
